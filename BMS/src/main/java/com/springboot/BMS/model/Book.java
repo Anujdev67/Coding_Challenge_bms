@@ -13,6 +13,17 @@ public class Book {
     public String getIsbn() {
 		return isbn;
 	}
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Book(String isbn, String title, String author, int publicationYear) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.author = author;
+		this.publicationYear = publicationYear;
+	}
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
