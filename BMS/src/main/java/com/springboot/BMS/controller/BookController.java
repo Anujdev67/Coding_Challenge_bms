@@ -19,30 +19,33 @@ import com.springboot.BMS.service.BookService;
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-@Autowired
-private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-@GetMapping
-public List<Book> getAllBooks(){
-	return bookService.getAllBooks();
-}
+    @GetMapping
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
 
-@GetMapping("/{isbn}")
-public ResponseEntity<Book> getBookByIsbn(@PathVariable String isbn){
-	return bookService.getBookByIsbn(isbn).map(ResponseEntity::ok)
-			.orElse(ResponseEntity.notFound().build());
-}
-@PostMapping
-public Book addBook(@RequestBody Book book) {
-	return bookService.addBook(book);
-}
-@PutMapping("/{isbn}")
-public ResponseEntity<Book> updateBook(@PathVariable String isbn,@RequestBody Book bookDetails){
-	return ResponseEntity.ok(bookService.updateBook(isbn, bookDetails));
-}
-@DeleteMapping("/{isbn}")
-public ResponseEntity<Void> deleteBook(@PathVariable String isbn){
-	bookService.deleteBook(isbn);
-	return ResponseEntity.noContent().build();
-}
+    @GetMapping("/{isbn}")
+    public ResponseEntity<Book> getBookByIsbn(@PathVariable String isbn) {
+        return bookService.getBookByIsbn(isbn).map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public Book addBook(@RequestBody Book book) {
+        return bookService.addBook(book);
+    }
+
+    @PutMapping("/{isbn}")
+    public ResponseEntity<Book> updateBook(@PathVariable String isbn, @RequestBody Book bookDetails) {
+        return ResponseEntity.ok(bookService.updateBook(isbn, bookDetails));
+    }
+
+    @DeleteMapping("/{isbn}")
+    public ResponseEntity<Void> deleteBook(@PathVariable String isbn) {
+        bookService.deleteBook(isbn);
+        return ResponseEntity.noContent().build();
+    }
 }
