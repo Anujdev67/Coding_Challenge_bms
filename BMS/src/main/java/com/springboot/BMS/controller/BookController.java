@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.BMS.model.Book;
+import com.springboot.BMS.model.Publisher;
 import com.springboot.BMS.service.BookService;
+import com.springboot.BMS.service.PublisherService;
 
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
     @Autowired
     private BookService bookService;
-
+@Autowired
+private PublisherService publisherService;
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
@@ -48,4 +51,19 @@ public class BookController {
         bookService.deleteBook(isbn);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/home")
+    public String home() {
+    	return "this is home page";
+    }
+    
+  //userwise books
+    @GetMapping("/user/{userId}")
+    public List<Book> getBooksByUser(@PathVariable int userId){
+    	return bookService.getBooksByUser(userId);
+    }
+    @GetMapping("/publishers")
+    public List<Publisher> getAllPublishers() {
+        return publisherService.getAllPublisher();
+    }
+    
 }

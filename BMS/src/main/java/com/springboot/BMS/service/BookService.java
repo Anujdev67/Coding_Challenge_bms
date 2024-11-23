@@ -40,4 +40,9 @@ public class BookService {
 		bookRepository.deleteById(isbn);
 	}
 
+	public List<Book> getBooksByUser(int userId) {
+		// TODO Auto-generated method stub
+		return bookRepository.findByUserId(userId);
+	}
+
 }

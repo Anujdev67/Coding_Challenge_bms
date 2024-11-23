@@ -2,6 +2,7 @@ package com.springboot.BMS.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -13,17 +14,8 @@ public class Book {
     public String getIsbn() {
 		return isbn;
 	}
-	public Book() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Book(String isbn, String title, String author, int publicationYear) {
-		super();
-		this.isbn = isbn;
-		this.title = title;
-		this.author = author;
-		this.publicationYear = publicationYear;
-	}
+	@ManyToOne
+	private User user;
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
@@ -45,6 +37,16 @@ public class Book {
 	public void setPublicationYear(int publicationYear) {
 		this.publicationYear = publicationYear;
 	}
-	
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Book(String isbn, String title, String author, int publicationYear) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.author = author;
+		this.publicationYear = publicationYear;
+	}
 
 }

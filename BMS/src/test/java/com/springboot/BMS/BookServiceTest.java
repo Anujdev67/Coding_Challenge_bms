@@ -2,7 +2,6 @@ package com.springboot.BMS;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -17,7 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.springboot.BMS.exception.ResourceNotFoundException;
 import com.springboot.BMS.model.Book;
 import com.springboot.BMS.repository.BookRepository;
 import com.springboot.BMS.service.BookService;

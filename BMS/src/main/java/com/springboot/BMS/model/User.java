@@ -2,6 +2,7 @@ package com.springboot.BMS.model;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,6 +13,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,9 +33,9 @@ public class User implements UserDetails {
     private String password;
 
     private boolean enabled = true;
-
-    
-
+@OneToMany
+@JoinColumn(name = "user_id")
+private List<Book> books;
     public int getId() {
 		return id;
 	}
